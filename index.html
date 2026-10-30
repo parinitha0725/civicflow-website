@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CivicFlow — From Complaints to Action</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span><span>Civic<span class="brand-light">Flow</span></span></a>
+    <nav><a class="active" href="#dashboard">Dashboard</a><a href="#report">Report an issue</a><a href="#track">Track report</a></nav>
+    <span class="live-pill"><i></i> Prototype demo</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">CITIZEN REPORTING · SMARTER CITY RESPONSE</p>
+        <h1>From complaints<br><em>to action.</em></h1>
+        <p class="hero-copy">One place to report local problems, understand what needs attention first, and follow every step toward a resolution.</p>
+        <a class="button primary" href="#report">＋ Report a problem</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="city-icon">⌂</div><div class="pin pin-one">!</div><div class="pin pin-two">✓</div>
+        <div class="art-caption"><b>Better signals.</b><br>Faster action.</div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section">
+      <div class="section-heading"><div><p class="eyebrow">OVERVIEW</p><h2>Community pulse</h2></div><span class="muted">Live demo data · stored in this browser</span></div>
+      <div class="stats">
+        <article class="stat-card"><span class="stat-icon purple">▤</span><span class="stat-label">Total reports</span><strong id="totalCount">0</strong><small>All submitted issues</small></article>
+        <article class="stat-card"><span class="stat-icon red">⚑</span><span class="stat-label">High priority</span><strong id="highCount">0</strong><small>Needs quick attention</small></article>
+        <article class="stat-card"><span class="stat-icon amber">◷</span><span class="stat-label">In progress</span><strong id="progressCount">0</strong><small>Being worked on</small></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><span class="stat-label">Resolved</span><strong id="resolvedCount">0</strong><small>Issues marked complete</small></article>
+      </div>
+    </section>
+
+    <section id="report" class="section report-layout">
+      <div class="form-panel">
+        <p class="eyebrow">MAKE YOUR VOICE COUNT</p><h2>Report a problem</h2>
+        <p class="muted">It takes less than a minute. Please avoid sharing personal information.</p>
+        <form id="reportForm">
+          <label for="description">What is happening?</label>
+          <textarea id="description" required maxlength="500" placeholder="Example: Water is collecting near the bus stop because the drain is blocked..."></textarea>
+          <div class="form-row">
+            <div><label for="category">Category</label><select id="category" required><option value="">Choose category</option><option>Road damage</option><option>Waterlogging / drainage</option><option>Waste management</option><option>Streetlight</option><option>Water supply</option><option>Public safety</option><option>Other</option></select></div>
+            <div><label for="location">Location / landmark</label><input id="location" required placeholder="e.g. Main bus stop"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="area">Area</label><select id="area"><option>Central Ward</option><option>North Ward</option><option>South Ward</option><option>East Ward</option><option>West Ward</option></select></div>
+            <div><label for="photo">Photo (optional)</label><input id="photo" type="file" accept="image/*"></div>
+          </div>
+          <button class="button primary full" type="submit">Submit report <span>→</span></button>
+          <p class="form-note">AI analysis in this demo uses transparent rules, not a live AI service.</p>
+        </form>
+      </div>
+      <aside class="ai-panel">
+        <div class="ai-badge">✦ AI</div><p class="eyebrow">WHAT HAPPENS NEXT?</p><h3>Your report gets understood.</h3>
+        <div class="ai-step"><b>01</b><div><strong>Understand</strong><p>We summarize the issue and check for similar reports.</p></div></div>
+        <div class="ai-step"><b>02</b><div><strong>Prioritize</strong><p>Urgency and public impact determine the priority.</p></div></div>
+        <div class="ai-step"><b>03</b><div><strong>Take action</strong><p>The report gets a trackable status for the community.</p></div></div>
+        <div class="honesty">ⓘ Demo note: priority and duplicate detection are rule-based examples. No real authority is notified.</div>
+      </aside>
+    </section>
+
+    <section class="section insights">
+      <div class="section-heading"><div><p class="eyebrow">AI-ASSISTED INSIGHT</p><h2>What needs attention?</h2></div><span class="tag">Explainable priority</span></div>
+      <div class="insight-grid">
+        <div class="insight-card hotspot"><span class="insight-symbol">⌖</span><div><small>AREA TO WATCH</small><h3 id="hotspotArea">No hotspot yet</h3><p id="hotspotText">Submit reports to reveal recurring issues in an area.</p></div></div>
+        <div class="insight-card"><span class="insight-symbol">✦</span><div><small>ACTION BRIEF</small><h3 id="briefTitle">Waiting for reports</h3><p id="briefText">As reports arrive, a short action brief will appear here.</p></div></div>
+      </div>
+    </section>
+
+    <section id="track" class="section">
+      <div class="section-heading"><div><p class="eyebrow">TRANSPARENT FOLLOW-UP</p><h2>Recent reports</h2></div><div class="filters"><select id="statusFilter"><option value="All">All statuses</option><option>Submitted</option><option>Under review</option><option>In progress</option><option>Resolved</option></select></div></div>
+      <div class="table-wrap"><table><thead><tr><th>REPORT</th><th>LOCATION</th><th>PRIORITY</th><th>STATUS</th><th>AI REASON</th><th>UPDATE</th></tr></thead><tbody id="reportsBody"><tr><td colspan="6" class="empty">No reports yet. Submit the first community report above.</td></tr></tbody></table></div>
+    </section>
+    <footer><span class="brand"><span class="brand-mark">C</span>CivicFlow</span><span>Built for civic impact · Prototype only</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
